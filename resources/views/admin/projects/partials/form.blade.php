@@ -118,7 +118,7 @@
 @enderror
 
     <input type="file" class="form-control ms_form-control mb-3 ms_file" id="image" placeholder="image"
-        name="image" value="{{ old('image') }}" id="ms_file" required>
+        name="image" value="{{ old('image') }}">
 
     @error('image')
         <div class="alert alert-danger">

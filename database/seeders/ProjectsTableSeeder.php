@@ -21,7 +21,6 @@ class ProjectsTableSeeder extends Seeder
             $newProject = new Project();
             $newProject->title = $faker->sentence();
             $newProject->description = $faker->text();
-            $newProject->image = $faker->imageUrl();
             $newProject->site_url = $faker->url();
             $newProject->start_date = $faker->dateTimeBetween('-2 week', '-1 week');
             $newProject->finish_date = $faker->dateTimeBetween('-1 week', 'now');
