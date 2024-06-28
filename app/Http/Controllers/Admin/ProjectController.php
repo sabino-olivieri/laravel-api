@@ -47,7 +47,10 @@ class ProjectController extends Controller
     {
         $newProject = new Project();
         $newProject->fill($request->all());
-        $newProject->image = Storage::put('img', $request->image);
+        if($request->image) {
+
+            $newProject->image = Storage::put('img', $request->image);
+        }
         $newProject->slug = Str::slug($newProject->title);
         $newProject->save();
         $newProject->technologies()->attach($request->technologies);
@@ -80,13 +83,14 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         
-        if($request->image){
-            Storage::delete($project->image);
-        }
+
 
         $project->fill($request->all());
         $project->slug = Str::slug($project->title);
-        $project->image = Storage::put('img', $request->image);
+        if($request->image){
+            Storage::delete($project->image);
+            $project->image = Storage::put('img', $request->image);
+        }
         $project->save();
         $project->technologies()->sync($request->technologies);
         return redirect()->route('admin.project.show', ['project' => $project->slug])->with('messages', 'Progetto '.$project->title.' modificato correttamente');
