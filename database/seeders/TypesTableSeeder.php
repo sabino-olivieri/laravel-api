@@ -15,7 +15,7 @@ class TypesTableSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker\Factory::create('it_IT');
-        for ($i=0; $i < 10 ; $i++) { 
+        for ($i=0; $i < 5 ; $i++) { 
             
             $newType = new Type();
             $newType->name = ucfirst($faker->word());

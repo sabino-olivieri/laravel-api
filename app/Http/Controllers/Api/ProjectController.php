@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index(?Int $perPage = 5) {
+    public function index(?Int $perPage = 6) {
 
         $projectsList = Project::with(['type', 'technologies'])->paginate($perPage)->appends(['per_page'=> $perPage]);
         $data = [

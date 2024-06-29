@@ -88,7 +88,9 @@ class ProjectController extends Controller
         $project->fill($request->all());
         $project->slug = Str::slug($project->title);
         if($request->image){
-            Storage::delete($project->image);
+            if($project->image) {
+                Storage::delete($project->image);
+            }
             $project->image = Storage::put('img', $request->image);
         }
         $project->save();
